@@ -46,7 +46,7 @@ action:
       entity_id: scene.back_garden_bright
 
   - service: light.turn_on
-    target: !input light_target
+    target: !input scene_target
   - wait_for_trigger:
       platform: state
       entity_id: !input motion_entity
@@ -54,4 +54,4 @@ action:
       to: "off"
   - delay: !input no_motion_wait
   - service: light.turn_off
-    target: !input light_target
+    target: !input scene_target
