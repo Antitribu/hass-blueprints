@@ -1,6 +1,6 @@
 blueprint:
   name: Motion-activated Scene after Sunset
-  description: Turn on scene when motion is detected and illuminance is below a set Lux level.
+  description: Turn on scene when motion is detected and it's after Sunset.
   domain: automation
   input:
     motion_entity:
@@ -35,9 +35,9 @@ trigger:
   to: "on"
 
 condition:
-  condition: numeric_state
-  entity_id: !input lux_entity
-  below: !input lux_level
+  - condition: sun
+    before: sunrise
+    after: sunset
 
 action:
   - service: light.turn_on
