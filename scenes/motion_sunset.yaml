@@ -40,6 +40,11 @@ condition:
     after: sunset
 
 action:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.back_garden_bright
+
   - service: light.turn_on
     target: !input light_target
   - wait_for_trigger:
